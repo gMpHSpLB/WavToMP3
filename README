@@ -1,0 +1,27 @@
+
+1. This project encodes wave files of type 8 , 16 and 24 bits covering 
+different Sample rates (mono and stereo). And uses VBR with quality = 3.
+
+2. Limitation:
+Unicode strings are not supported.
+32 bits IEEE 754 float is not supported.
+
+3. It uses pthread for parallel encoding.
+
+4. Tested on platform: Ubuntu, Window (Binary from MinGW32 gcc-6.3.0).
+
+5. Uses static libmp3lame.a to build executable.
+
+6. Below is the code structure
+
+src             - contains all modules related to application 
+include         - contains Lame Library API
+externallibs    - constains Lame static library.
+main.cpp        - Create objects of different modules to read wave files from directory, enque them
+                  invoke threads to encode them.
+7. Usage:  <executable name> <Path of directory"
+  example: wav2mp3.exe "C:\PersonalLocation\wavfiles"
+
+8. See Makefile for building executable. 
+Note: libmp3lame.a is required to keep under "externallibs" directory
+> make clean && make
